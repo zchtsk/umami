@@ -3,8 +3,6 @@ version: '3'
 services:
   umami:
     image: ghcr.io/umami-software/umami:postgresql-latest
-    ports:
-      - "3000:3000"
     environment:
       DATABASE_URL: ${DATABASE_URL}
       DATABASE_TYPE: postgresql
@@ -17,3 +15,8 @@ services:
       retries: 5
 volumes:
   umami-db-data:
+
+networks:
+  default:
+    external: true
+    name: firehose_nginx
